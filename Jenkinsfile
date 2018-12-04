@@ -79,8 +79,15 @@ timestamps {
           dir('scm') {
             // Download google chrome using script from https://intoli.com/blog/installing-google-chrome-on-centos/
             sh """
-              sudo apt-get install libwayland-egl1-mesa
-              curl https://intoli.com/install-google-chrome.sh | bash
+              cat << EOF > /etc/yum.repos.d/google-chrome.repo
+              [google-chrome]
+              name=google-chrome
+              baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+              enabled=1
+              gpgcheck=1
+              gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+              EOF
+              yum install google-chrome-stable
               sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
             """
             // Replace selenium.session.baseurl and run tests using headless chrome
