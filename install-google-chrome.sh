@@ -207,12 +207,12 @@ function install_missing_dependencies() {
 
             echo "Finding dependency for ${file}"
 
-            if [file == 'libwayland-egl.so.1']; then
-                continue
-            else
-                # Find the package name for this library.
-                package=$(repoquery --repofrompath=centos7,http://mirror.centos.org/centos/7/os/`arch` \
-                    --repoid=centos7 -q --qf="%{name}" --whatprovides "$file")
+            # Find the package name for this library.
+            package=$(repoquery --repofrompath=centos7,http://mirror.centos.org/centos/7/os/`arch` \
+                --repoid=centos7 -q --qf="%{name}" --whatprovides "$file")
+
+            if [ file == 'libwayland-egl.so.1' ]; then
+                package = 'mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm'
             fi
 
             install_package "${package}"
