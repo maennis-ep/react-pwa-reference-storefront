@@ -202,15 +202,16 @@ function install_missing_dependencies() {
                 continue
             fi
 
+            if [[ $file == *"libwayland-egl.so.1"* ]]; then
+                # package="mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
+                echo "Skipping ${file}"
+                continue
+            fi
+
             # We'll require an empty round before completing.
             finished=false
 
             echo "Finding dependency for ${file}"
-
-            if [[ $file == *"libwayland-egl.so.1"* ]]; then
-                # package="mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
-                continue
-            fi
 
             # Find the package name for this library.
             package=$(repoquery --repofrompath=centos7,http://mirror.centos.org/centos/7/os/`arch` \
