@@ -79,7 +79,7 @@ timestamps {
           dir('scm') {
             // Download google chrome using script from https://intoli.com/blog/installing-google-chrome-on-centos/
             sh """
-              apt install libwayland-egl1
+              sudo apt-get install libwayland-egl1-mesa
               curl https://intoli.com/install-google-chrome.sh | bash
               sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
             """
