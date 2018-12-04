@@ -79,8 +79,7 @@ timestamps {
           dir('scm') {
             // Download google chrome using script from https://intoli.com/blog/installing-google-chrome-on-centos/
             sh """
-              wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-              sudo yum localinstall google-chrome-stable_current_x86_64.rpm --skip-broken
+              curl https://intoli.com/install-google-chrome.sh | bash
               sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
             """
             // Replace selenium.session.baseurl and run tests using headless chrome
