@@ -223,7 +223,7 @@ function install_missing_dependencies() {
             echo "package: ${package}"
 
             if [[ $file == *"libwayland-egl.so.1"* ]]; then
-                package="mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
+                #package="mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
                 echo "setting ${file}"
             fi
 
@@ -244,7 +244,7 @@ function install_missing_dependencies() {
 
 
 # Install the missing dependencies for Chrome.
-#install_missing_dependencies /opt/google/chrome/chrome
+install_missing_dependencies /opt/google/chrome/chrome
 
 
 if ! installation_status; then
