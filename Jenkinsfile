@@ -3,15 +3,15 @@
 timestamps {
   ansiColor('xterm') {
     node('node-small') {
-      // stage('SETUP') {
-      //   deleteDir()
-      //   dir('scm'){
-      //     checkout scm
-      //   }
-      //   dir('solrHome') {
-      //     git branch: SOLR_HOME_BRANCH, url: SOLR_HOME_GIT_URL
-      //   }
-      // }
+      stage('SETUP') {
+        deleteDir()
+        dir('scm'){
+          checkout scm
+        }
+        dir('solrHome') {
+          git branch: SOLR_HOME_BRANCH, url: SOLR_HOME_GIT_URL
+        }
+      }
       // stage('BUILD') {
       //   dir('scm') {
       //     // Build the docker image, push to aws
