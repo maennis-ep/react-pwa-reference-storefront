@@ -79,14 +79,16 @@ timestamps {
           dir('scm') {
             // Download google chrome using script from https://intoli.com/blog/installing-google-chrome-on-centos/
             sh """
-              sudo cat << EOF > /etc/yum.repos.d/google-chrome.repo
-              [google-chrome]
-              name=google-chrome
-              baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
-              enabled=1
-              gpgcheck=1
-              gpgkey=https://dl.google.com/linux/linux_signing_key.pub
-              EOF
+              echo "Configuring the Google Chrome repo in /etc/yum.repos.d/google-chrome.repo"
+              echo "[google-chrome]" > "/etc/yum.repos.d/google-chrome.repo"
+              echo "name=google-chrome" >> "/etc/yum.repos.d/google-chrome.repo"
+              echo "baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch" >> "/etc/yum.repos.d/google-chrome.repo"
+              echo "enabled=1" >> "/etc/yum.repos.d/google-chrome.repo"
+              echo "gpgcheck=1" >> "/etc/yum.repos.d/google-chrome.repo"
+              echo "gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub" >> "/etc/yum.repos.d/google-chrome.repo"
+              yum install -y wget
+              wget https://dl.google.com/linux/linux_signing_key.pub
+              rpm --import linux_signing_key.pub
               sudo yum install google-chrome-stable
               sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
             """
