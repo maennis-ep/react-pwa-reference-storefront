@@ -241,7 +241,7 @@ function install_missing_dependencies() {
 
 
 # Install the missing dependencies for Chrome.
-install_missing_dependencies /opt/google/chrome/chrome
+#install_missing_dependencies /opt/google/chrome/chrome
 
 
 if ! installation_status; then
