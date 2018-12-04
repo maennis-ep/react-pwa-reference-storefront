@@ -80,16 +80,18 @@ timestamps {
             // Download google chrome using script from https://intoli.com/blog/installing-google-chrome-on-centos/
             sh """
               echo "Configuring the Google Chrome repo in /etc/yum.repos.d/google-chrome.repo"
-              echo "[google-chrome]" > "/etc/yum.repos.d/google-chrome.repo"
-              echo "name=google-chrome" >> "/etc/yum.repos.d/google-chrome.repo"
-              echo "baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch" >> "/etc/yum.repos.d/google-chrome.repo"
-              echo "enabled=1" >> "/etc/yum.repos.d/google-chrome.repo"
-              echo "gpgcheck=1" >> "/etc/yum.repos.d/google-chrome.repo"
-              echo "gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub" >> "/etc/yum.repos.d/google-chrome.repo"
+              sudo echo "[google-chrome]" > "/etc/yum.repos.d/google-chrome.repo"
+              sudo echo "name=google-chrome" >> "/etc/yum.repos.d/google-chrome.repo"
+              sudo echo "baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch" >> "/etc/yum.repos.d/google-chrome.repo"
+              sudo echo "enabled=1" >> "/etc/yum.repos.d/google-chrome.repo"
+              sudo echo "gpgcheck=1" >> "/etc/yum.repos.d/google-chrome.repo"
+              sudo echo "gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub" >> "/etc/yum.repos.d/google-chrome.repo"
               yum install -y wget
               wget https://dl.google.com/linux/linux_signing_key.pub
               rpm --import linux_signing_key.pub
               sudo yum install google-chrome-stable
+              wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+              sudo yum localinstall google-chrome-stable_current_x86_64.rpm
               sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
             """
             // Replace selenium.session.baseurl and run tests using headless chrome
