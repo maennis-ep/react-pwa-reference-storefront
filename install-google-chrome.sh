@@ -135,6 +135,9 @@ function install_package() {
         sort -u
     )
 
+    echo "param: $1"
+    echo "url: ${url}"
+
     # Download the RPM.
     wget "${url}" -O "$1.rpm"
 
