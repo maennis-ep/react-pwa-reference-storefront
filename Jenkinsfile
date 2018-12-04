@@ -79,6 +79,7 @@ timestamps {
           dir('scm') {
             // Download google chrome using script from https://intoli.com/blog/installing-google-chrome-on-centos/
             sh """
+              chmod 755 ./install-google-chrome.sh
               sudo ./install-google-chrome.sh
               sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
             """
