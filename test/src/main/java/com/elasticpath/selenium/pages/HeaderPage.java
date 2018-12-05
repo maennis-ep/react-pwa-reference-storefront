@@ -103,7 +103,8 @@ public class HeaderPage extends AbstractPageObject {
 	}
 
 	public CartPage clickCartLink() {
-		getWaitDriver().waitForElementToBeClickable(By.cssSelector(CART_LINK_CSS)).click();
+		getWaitDriver().waitForPageToLoad();
+		navigationBar.findElement(By.cssSelector(CART_LINK_CSS)).click();
 		return new CartPage(driver);
 	}
 
