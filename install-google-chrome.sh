@@ -135,14 +135,14 @@ function install_package() {
         sort -u
     )
 
-    if [[ $1 == *"mesa-libwayland-egl"* ]]; then
-        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
+    if [[ $1 == *"libwayland-egl"* ]]; then
+        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/libwayland-egl-1.15.0-1.el7.x86_64.rpm"
         echo "param: $1"
         echo "url: ${url}"
     fi
 
-    if [[ $1 == *"libwayland-egl"* ]]; then
-        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/libwayland-egl-1.15.0-1.el7.x86_64.rpm"
+    if [[ $1 == *"mesa-libwayland-egl"* ]]; then
+        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
         echo "param: $1"
         echo "url: ${url}"
     fi
