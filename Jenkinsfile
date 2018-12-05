@@ -81,7 +81,7 @@ timestamps {
             // sh """
             //   curl https://intoli.com/install-google-chrome.sh | bash
             //   sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
-            // """
+            // """aoeu
             sh """
               su -
               cat << EOF > /etc/yum.repos.d/google-chrome.repo
