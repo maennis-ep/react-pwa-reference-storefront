@@ -136,7 +136,7 @@ function install_package() {
     )
 
     if [[ $1 == *"libwayland-egl.so.1"* ]]; then
-        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
+        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/libwayland-egl-1.15.0-1.el7.x86_64.rpm"
         echo "param: $1"
         echo "url: ${url}"
 
