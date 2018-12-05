@@ -135,14 +135,17 @@ function install_package() {
         sort -u
     )
 
-    # if [[ $1 == *"libwayland-egl"* ]]; then
-    #     url="http://mirror.centos.org/centos/7/os/x86_64/Packages/libwayland-egl-1.15.0-1.el7.x86_64.rpm"
-    #     echo "param: $1"
-    #     echo "url: ${url}"
-    # fi
+    if [[ $1 == *"libwayland-egl.so.1"* ]]; then
+        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
+        echo "param: $1"
+        echo "url: ${url}"
+
+        # Download the RPM.
+        wget "${url}" -O "mesa-libwayland-egl.rpm"
+    fi
 
     if [[ $1 == *"mesa-libwayland-egl"* ]]; then
-        url="https://rpmfind.net/linux/fedora/linux/updates/27/x86_64/Packages/m/mesa-libwayland-egl-17.3.9-1.fc27.x86_64.rpm"
+        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
         echo "param: $1"
         echo "url: ${url}"
 
