@@ -123,7 +123,7 @@ yum install -y \
 # Helper function to install packages in the chroot by name (as an argument).
 function install_package() {
     # We'll leave the RPMs around to avoid redownloading things.
-    if [ -f "$1.rpm" ]; then
+    if [ -f "$1.rpm" || -f "mesa-libwayland-egl.rpm.rpm" ]; then
         return 0
     fi
 
