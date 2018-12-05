@@ -135,8 +135,11 @@ function install_package() {
         sort -u
     )
 
-    echo "param: $1"
-    echo "url: ${url}"
+    if [[ $1 == *"libwayland-egl"* ]]; then
+        url="http://mirror.centos.org/centos/7/os/x86_64/Packages/mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
+        echo "param: $1"
+        echo "url: ${url}"
+    fi
 
     # Download the RPM.
     wget "${url}" -O "$1.rpm"
@@ -221,11 +224,6 @@ function install_missing_dependencies() {
                 --repoid=centos7 -q --qf="%{name}" --whatprovides "$file")
 
             echo "package: ${package}"
-
-            if [[ $file == *"libwayland-egl.so.1"* ]]; then
-                # package="mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
-                echo "setting ${file}"
-            fi
 
             echo "package: ${package}"
 
