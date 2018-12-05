@@ -217,7 +217,12 @@ function install_missing_dependencies() {
             if [[ $file == *"libwayland-egl.so.1"* ]]; then
                 # package="mesa-libwayland-egl-18.0.5-3.el7.x86_64.rpm"
                 echo "Skipping ${file}"
-                # continue
+                continue
+            fi
+
+            if [[ $1 == *"mesa-libwayland-egl"* ]]; then
+                echo "Skipping ${file}"
+                continue
             fi
 
             # We'll require an empty round before completing.
