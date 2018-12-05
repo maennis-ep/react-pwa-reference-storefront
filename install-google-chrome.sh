@@ -142,6 +142,10 @@ function install_package() {
 
         # Download the RPM.
         wget "${url}" -O "mesa-libwayland-egl.rpm"
+
+        # Extract it.
+        echo "Extracting $1..."
+        rpm2cpio "mesa-libwayland-egl.rpm" | cpio -idmv > /dev/null 2>&1
     fi
 
     if [[ $1 == *"mesa-libwayland-egl"* ]]; then
@@ -151,14 +155,18 @@ function install_package() {
 
         # Download the RPM.
         wget "${url}" -O "mesa-libwayland-egl.rpm"
+
+        # Extract it.
+        echo "Extracting $1..."
+        rpm2cpio "mesa-libwayland-egl.rpm" | cpio -idmv > /dev/null 2>&1
     else
         # Download the RPM.
         wget "${url}" -O "$1.rpm"
-    fi
 
-    # Extract it.
-    echo "Extracting $1..."
-    rpm2cpio $1.rpm | cpio -idmv > /dev/null 2>&1
+        # Extract it.
+        echo "Extracting $1..."
+        rpm2cpio $1.rpm | cpio -idmv > /dev/null 2>&1
+    fi
 }
 
 
