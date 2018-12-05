@@ -145,10 +145,13 @@ function install_package() {
         url="https://rpmfind.net/linux/fedora/linux/updates/27/x86_64/Packages/m/mesa-libwayland-egl-17.3.9-1.fc27.x86_64.rpm"
         echo "param: $1"
         echo "url: ${url}"
-    fi
 
-    # Download the RPM.
-    wget "${url}" -O "$1.rpm"
+        # Download the RPM.
+        wget "${url}" -O "mesa-libwayland-egl.rpm"
+    else
+        # Download the RPM.
+        wget "${url}" -O "$1.rpm"
+    fi
 
     # Extract it.
     echo "Extracting $1..."
